@@ -14,7 +14,6 @@ paint(CanvasElement canvas, int width, int height){
   canvas.width = width;
   canvas.height = height;
   
-  //
   var paint = canvas.getContext('2d');
   
   var grad = createGradient(paint, width, height);
@@ -40,9 +39,9 @@ CanvasGradient createGradient(CanvasRenderingContext2D paint,
       random.nextDouble()*width, random.nextDouble()*height);
   }else{
     return paint.createRadialGradient(
-        random.nextDouble()*width, random.nextDouble()*height,
-        random.nextDouble()*width, random.nextDouble()*width,
-        random.nextDouble()*height, random.nextDouble()*height);
+      random.nextDouble()*width, random.nextDouble()*height,
+      random.nextDouble()*width, random.nextDouble()*width,
+      random.nextDouble()*height, random.nextDouble()*height);
   }
 }
 
