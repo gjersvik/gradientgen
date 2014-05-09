@@ -1,5 +1,10 @@
+library gradientgen;
+
 import 'dart:html';
 import 'dart:math';
+import 'dart:typed_data';
+
+part 'src/color.dart';
 
 var random = new Random();
 
@@ -50,28 +55,15 @@ CanvasGradient createGradient(CanvasRenderingContext2D paint,
 
 addStepsFirst(var gradiant){
   for(int i = 0; i < 10; i += 1){
-    gradiant.addColorStop(random.nextDouble(), genColor());
+    gradiant.addColorStop(random.nextDouble(),
+        new Color.randomSolid(random).toString());
   }
 }
 
 addSteps(var gradiant){
   for(int i = 0; i < 10; i += 1){
-    gradiant.addColorStop(random.nextDouble(), genColorAlfa());
+    gradiant.addColorStop(random.nextDouble(),
+        new Color.random(random).toString());
   }
-}
-
-String genColor(){
-  var r = (random.nextDouble() * 256).floor();
-  var g = (random.nextDouble() * 256).floor();
-  var b = (random.nextDouble() * 256).floor();
-  return 'rgb($r,$g,$b)';
-}
-
-String genColorAlfa(){
-  var r = (random.nextDouble() * 256).floor();
-  var g = (random.nextDouble() * 256).floor();
-  var b = (random.nextDouble() * 256).floor();
-  var a = random.nextDouble();
-  return 'rgba($r,$g,$b,${a.toStringAsFixed(5)})';
 }
 
