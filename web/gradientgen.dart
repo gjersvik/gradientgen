@@ -1,15 +1,12 @@
 import 'dart:html';
 import 'dart:math';
-import 'dart:async';
 
 var random = new Random();
 
 void main() {
   CanvasElement canvas = querySelector('canvas');
-
-  new Timer.periodic(new Duration(seconds:1),(_){
-    paint(canvas,document.body.clientWidth, document.body.clientHeight);
-  });
+  
+  paint(canvas,document.body.clientWidth, document.body.clientHeight);
 }
 
 paint(CanvasElement canvas, int width, int height){
