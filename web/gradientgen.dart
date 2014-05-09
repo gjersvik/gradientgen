@@ -1,15 +1,19 @@
 import 'dart:html';
 import 'dart:math';
+import 'dart:async';
 
 var random = new Random();
 
 void main() {
   CanvasElement canvas = querySelector('canvas');
-  
-  paint(canvas,document.body.clientWidth, document.body.clientHeight);
+
+  new Timer.periodic(new Duration(seconds:1),(_){
+    paint(canvas,document.body.clientWidth, document.body.clientHeight);
+  });
 }
 
 paint(CanvasElement canvas, int width, int height){
+  var timer = new Stopwatch()..start();
   // canvas to fullscren
   canvas.width = width;
   canvas.height = height;
@@ -29,6 +33,8 @@ paint(CanvasElement canvas, int width, int height){
     paint.fillStyle = grad;
     paint.fillRect(0, 0, width, height);
   }
+  timer.stop();
+  print(timer.elapsedMilliseconds);
 }
 
 CanvasGradient createGradient(CanvasRenderingContext2D paint,
