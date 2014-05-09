@@ -34,9 +34,16 @@ paint(CanvasElement canvas, int width, int height){
 
 CanvasGradient createGradient(CanvasRenderingContext2D paint,
                               int width, int height){
-  return paint.createLinearGradient(
-    random.nextDouble()*width, random.nextDouble()*height,
-    random.nextDouble()*width, random.nextDouble()*height);
+  if(random.nextBool()){
+    return paint.createLinearGradient(
+      random.nextDouble()*width, random.nextDouble()*height,
+      random.nextDouble()*width, random.nextDouble()*height);
+  }else{
+    return paint.createRadialGradient(
+        random.nextDouble()*width, random.nextDouble()*height,
+        random.nextDouble()*width, random.nextDouble()*width,
+        random.nextDouble()*height, random.nextDouble()*height);
+  }
 }
 
 addStepsFirst(var gradiant){
