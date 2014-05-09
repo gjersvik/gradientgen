@@ -5,26 +5,50 @@ var random = new Random();
 
 void main() {
   CanvasElement canvas = querySelector('canvas');
-  CanvasRenderingContext2D paint = canvas.getContext('2d');
   
+  paint(canvas,document.body.clientWidth, document.body.clientHeight);
+}
+
+paint(CanvasElement canvas, int width, int height){
   // canvas to fullscren
-  var height = canvas.height = document.body.clientHeight;
-  var width = canvas.width = document.body.clientWidth;
+  canvas.width = width;
+  canvas.height = height;
   
-  var grad = paint.createLinearGradient(
-      random.nextDouble()*width, random.nextDouble()*height,
-      random.nextDouble()*width, random.nextDouble()*height);
+  //
+  var paint = canvas.getContext('2d');
   
-  grad.addColorStop(random.nextDouble(), genColor());
-  grad.addColorStop(random.nextDouble(), genColor());
-  grad.addColorStop(random.nextDouble(), genColor());
-  grad.addColorStop(random.nextDouble(), genColor());
-  grad.addColorStop(random.nextDouble(), genColor());
-  grad.addColorStop(random.nextDouble(), genColor());
-  grad.addColorStop(random.nextDouble(), genColor());
+  var grad = createGradient(paint, width, height);
+    
+  addStepsFirst(grad);
   
   paint.fillStyle = grad;
   paint.fillRect(0, 0, width, height);
+  
+  for(int i = 0; i < 9; i += 1){
+    var grad = createGradient(paint, width, height);    
+    addSteps(grad);
+    paint.fillStyle = grad;
+    paint.fillRect(0, 0, width, height);
+  }
+}
+
+CanvasGradient createGradient(CanvasRenderingContext2D paint,
+                              int width, int height){
+  return paint.createLinearGradient(
+    random.nextDouble()*width, random.nextDouble()*height,
+    random.nextDouble()*width, random.nextDouble()*height);
+}
+
+addStepsFirst(var gradiant){
+  for(int i = 0; i < 10; i += 1){
+    gradiant.addColorStop(random.nextDouble(), genColor());
+  }
+}
+
+addSteps(var gradiant){
+  for(int i = 0; i < 10; i += 1){
+    gradiant.addColorStop(random.nextDouble(), genColorAlfa());
+  }
 }
 
 String genColor(){
