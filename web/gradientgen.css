@@ -5,7 +5,19 @@ body {
   width: 100%;
 }
 
-canvas {
+h1{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  width: 80%;
+  text-align: center;
+  
+  margin: 5% 10%;
+  padding: 10px 30px;
+  border-radius: 1000px;
+}
+
+.pic {
   height: 100%;
   width: 100%;
   display: block;
