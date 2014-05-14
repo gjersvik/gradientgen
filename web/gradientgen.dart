@@ -16,8 +16,12 @@ void main() {
 }
 
 refresh([_]){
-  CanvasElement canvas = querySelector('canvas');
+  CanvasElement canvas = new CanvasElement();
   paint(canvas,document.body.clientWidth, document.body.clientHeight);
+  ImageElement pic = querySelector('.pic');
+  pic.width = document.body.clientWidth;
+  pic.height = document.body.clientHeight;
+  pic.src = canvas.toDataUrl();
 }
 
 paint(CanvasElement canvas, int width, int height){
