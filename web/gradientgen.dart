@@ -9,8 +9,14 @@ part 'src/color.dart';
 var random = new Random();
 
 void main() {
-  CanvasElement canvas = querySelector('canvas');
+  var button = querySelector('.refresh');
+  button.onClick.listen(refresh);
   
+  refresh();
+}
+
+refresh([_]){
+  CanvasElement canvas = querySelector('canvas');
   paint(canvas,document.body.clientWidth, document.body.clientHeight);
 }
 
