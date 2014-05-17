@@ -16,16 +16,23 @@ void main() {
 }
 
 refresh([_]){
+  var timer = new Stopwatch()..start();
+  var width = document.body.clientWidth * window.devicePixelRatio;
+  width = width.toInt();
+  var height = document.body.clientHeight * window.devicePixelRatio;
+  height = height.toInt();
+  
   CanvasElement canvas = new CanvasElement();
-  paint(canvas,document.body.clientWidth, document.body.clientHeight);
+  paint(canvas, width, height);
   ImageElement pic = querySelector('.pic');
-  pic.width = document.body.clientWidth;
-  pic.height = document.body.clientHeight;
+  var beforeSave = timer.elapsedMilliseconds;
   pic.src = canvas.toDataUrl();
+  
+  timer.stop();
+  print("$beforeSave:${timer.elapsedMilliseconds}");
 }
 
 paint(CanvasElement canvas, int width, int height){
-  var timer = new Stopwatch()..start();
   // canvas to fullscren
   canvas.width = width;
   canvas.height = height;
@@ -45,8 +52,6 @@ paint(CanvasElement canvas, int width, int height){
     paint.fillStyle = grad;
     paint.fillRect(0, 0, width, height);
   }
-  timer.stop();
-  print(timer.elapsedMilliseconds);
 }
 
 CanvasGradient createGradient(CanvasRenderingContext2D paint,
