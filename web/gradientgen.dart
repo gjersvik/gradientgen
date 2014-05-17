@@ -12,7 +12,18 @@ void main() {
   var button = querySelector('.refresh');
   button.onClick.listen(refresh);
   
+  querySelectorAll('.help').onClick.listen(help);
+  
   refresh();
+}
+
+help([_]){
+  var style = querySelectorAll('.helptext').style;
+  if(style.display == 'none'){
+    style.display = 'block';
+  }else{
+    style.display = 'none';
+  };
 }
 
 refresh([_]){
