@@ -98,5 +98,6 @@ h1{
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
- 
-.icon-refresh:before { content: '\e803'; } /* '' */
+.icon-help:before{content:'\e800'}
+.icon-dropbox:before{content:'\e801'}
+.icon-refresh:before{content:'\e803'}
