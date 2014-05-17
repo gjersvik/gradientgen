@@ -3,18 +3,24 @@ library gradientgen;
 import 'dart:html';
 import 'dart:math';
 import 'dart:typed_data';
+import 'dart:js';
 
 part 'src/color.dart';
 
 var random = new Random();
 
 void main() {
-  var button = querySelector('.refresh');
-  button.onClick.listen(refresh);
-  
+  querySelectorAll('.refresh').onClick.listen(refresh);
   querySelectorAll('.help').onClick.listen(help);
+  querySelectorAll('.dropbox').onClick.listen(dropbox);
   
   refresh();
+}
+
+dropbox([_]){
+  JsObject dropbox = context['Dropbox'];
+  var data = (querySelector('.pic') as ImageElement).src;
+  dropbox.callMethod('save',[data,'gradientgen.png']);
 }
 
 help([_]){
