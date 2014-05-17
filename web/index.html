@@ -8,28 +8,24 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
   </head>
   <body>
-    <h1>Gradient Generator</h1>
     <img class="pic">
-    
-    <div class="help">
-      Gradient Generator
-      Creates random pictures based on 10 gradiances.
-      So of you get a ugly one you can click the <span class="icon-refresh"></span> button.
-      
+    <h1 class="gui">Gradient Generator</h1>
+    <div class="gui helptext">
+      <p>Creates random pictures based on 10 gradiances.</p>
+      <p>So of you get a ugly one you can click the <span class="icon-refresh"></span> button.
       To get back to this help click the <span class="icon-help"></span> button.
-      
       And there are two ways to save pictures the first is to save to dropbox 
       with the <span class="icon-dropbox"></span> button.
-      Or you can save the picture to disk by your browsers default metode.
-      
-      <button class="close"></button>
+      Or you can save the picture to disk by your browsers default metode.</p>
     </div>
+    <button class="gui help helptext">Close</button>
     
-    <div class="button-group">
+    <div class="button-group gui">
       <button class="dropbox icon-dropbox"></button>
       <button class="refresh icon-refresh"></button>
       <button class="help icon-help"></button>
     </div>
+    
     <script type="application/dart" src="gradientgen.dart"></script>
     <script src="packages/browser/dart.js"></script>
   </body>
